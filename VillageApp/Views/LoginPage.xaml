@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VillageApp.Views.LoginPage">
+    <ScrollView >
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Image
+          Source="icon.png"
+          HeightRequest="185"
+          Aspect="AspectFit"
+          SemanticProperties.Description="dot net bot in a race car number eight" Margin="0,0,0,20"/>
+            <Label Text="Village App" HorizontalOptions="Center" Margin="0,0,0,20" />
+            <Entry Margin="0,0,0,20"/>
+            <Entry/>
+            <Button VerticalOptions="EndAndExpand" Text="Login" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

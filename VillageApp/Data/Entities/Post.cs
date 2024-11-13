@@ -1,6 +1,6 @@
-﻿namespace VillageApp.Models
+﻿namespace VillageApp.Data.Entities
 {
-    public record Post
+    public class Post
     {
         public required string Title { get; set; }
         public required string Id { get; set; }

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<views:ContentPageBase
              x:Class="VillageApp.Views.FeedPage" 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:handlers="clr-namespace:VillageApp.Handlers"
+    
     xmlns:viewmodel="clr-namespace:VillageApp.ViewModels"
+    xmlns:views="clr-namespace:VillageApp.Views"
     xmlns:models="clr-namespace:VillageApp.Models"
     xmlns:converters="clr-namespace:VillageApp.Converters"
+    x:DataType="viewmodel:FeedViewModel"
              Title="Feed">
-    <ContentPage.BindingContext>
-        <viewmodel:FeedViewModel/>
-    </ContentPage.BindingContext>
-    <StackLayout >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <SearchBar 
+            Grid.Row="0"
             Placeholder="Buscar posts"
             CancelButtonColor="Black"
             x:Name="searchBar">
@@ -25,8 +30,8 @@
             </SearchBar.Behaviors>
         </SearchBar>
 
-        <CollectionView VerticalOptions="FillAndExpand" ItemsLayout="VerticalList" ItemsSource="{Binding Posts, Mode=OneWay}">
-            
+        <CollectionView 
+            Grid.Row="1"  VerticalOptions="FillAndExpand" ItemsLayout="VerticalList" ItemsSource="{Binding Posts, Mode=OneWay}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Post">
                     <Frame Margin="0,0,0,10">
@@ -40,5 +45,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
-</ContentPage>
+        <Button Command="{Binding AddPostCommand}" Text="+" Padding="0" CornerRadius="50" FontSize="Large" Grid.Row="1" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" VerticalOptions="End"/>
+    </Grid>
+</views:ContentPageBase>

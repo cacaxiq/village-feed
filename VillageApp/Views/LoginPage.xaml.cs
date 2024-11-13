@@ -2,9 +2,9 @@ using VillageApp.ViewModels;
 
 namespace VillageApp.Views;
 
-public partial class FeedPage : ContentPageBase
+public partial class LoginPage : ContentPage
 {
-	public FeedPage(FeedViewModel viewModel)
+    public LoginPage(LoginViewModel viewModel)
     {
         BindingContext = viewModel;
         InitializeComponent();

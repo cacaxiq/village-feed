@@ -7,11 +7,15 @@
     Shell.FlyoutBehavior="Disabled"
     Title="VillageApp">
 
-    <TabBar>
-        <Tab Title="Feed">
+    <FlyoutItem Route="Login">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="Login" />
+    </FlyoutItem>
+
+    <TabBar Route="Main">
+        <Tab Route="Feed"  Title="Feed" >
             <ShellContent ContentTemplate="{DataTemplate views:FeedPage}" />
         </Tab>
-        <Tab Title="Profile">
+        <Tab Route="Profile" Title="Profile">
             <ShellContent ContentTemplate="{DataTemplate views:ProfilePage}" />
         </Tab>
     </TabBar>
