@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using VillageApp.Data;
 using VillageApp.Models;
@@ -22,7 +23,7 @@ namespace VillageApp.ViewModels
 
         public override async Task InitializeAsync()
         {
-            var posts = dbContext.Posts.Select(post => new Models.Post{ Id = post.Id, Title = post.Title, Content = post.Content}).ToList();
+            var posts = dbContext.Posts.Include(post => post.User).Select(post => post.ToModel()).ToList();
             Posts.ReloadData(posts);
         }
 
@@ -30,8 +31,9 @@ namespace VillageApp.ViewModels
         private void Search(string text)
         {
             var posts = dbContext.Posts
+                .Include(post => post.User)
                 .Where(post => post.Title.Contains(text) || post.Content.Contains(text))
-                .Select(post => new Models.Post { Id = post.Id, Title = post.Title, Content = post.Content })
+                .Select(post => post.ToModel())
                 .ToList();
 
             Posts.ReloadData(posts);

@@ -7,12 +7,12 @@
     
     xmlns:viewmodel="clr-namespace:VillageApp.ViewModels"
     xmlns:views="clr-namespace:VillageApp.Views"
-    xmlns:models="clr-namespace:VillageApp.Models"
+    xmlns:template="clr-namespace:VillageApp.Views.Templates"
     xmlns:converters="clr-namespace:VillageApp.Converters"
-    x:DataType="viewmodel:FeedViewModel"
+    x:DataType="viewmodel:FeedViewModel" Padding="0"
              Title="Feed">
 
-    <Grid>
+    <Grid RowSpacing="10" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -31,17 +31,14 @@
         </SearchBar>
 
         <CollectionView 
-            Grid.Row="1"  VerticalOptions="FillAndExpand" ItemsLayout="VerticalList" ItemsSource="{Binding Posts, Mode=OneWay}">
+            Grid.Row="1" ItemsSource="{Binding Posts, Mode=OneWay}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Post">
-                    <Frame Margin="0,0,0,10">
-                        <StackLayout Spacing="5">
-                            <Label Text="{Binding Title}"    Style="{StaticResource PostHeadline}">
-                            </Label>
-                            <Label Text="{Binding Content}"   Style="{StaticResource PostSubHeadline}">
-                            </Label>
-                        </StackLayout>
-                    </Frame>
+                <DataTemplate>
+                    <template:PostTemplate />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

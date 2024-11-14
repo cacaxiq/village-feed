@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+using System.Text.Json;
 using VillageApp.Data.Entities;
 
 namespace VillageApp.Data
@@ -12,9 +12,22 @@ namespace VillageApp.Data
             UpdateDatabaseIfRequired();
         }
 
-        private readonly int LATEST_DATABASE_VERSION = 1;
+        private readonly int LATEST_DATABASE_VERSION = 0;
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Post>()
+                .Property(e => e.Medias)
+                .HasConversion(
+                    v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+                    v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions)null));
+
+            base.OnModelCreating(modelBuilder);
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

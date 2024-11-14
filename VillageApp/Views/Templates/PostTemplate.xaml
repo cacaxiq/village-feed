@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:VillageApp.Models"
+             x:DataType="models:Post"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="VillageApp.Views.Templates.PostTemplate">
+
+    <StackLayout Spacing="10">
+        <Grid RowDefinitions="*,*" ColumnDefinitions="5,Auto,5,*,Auto,5">
+            <toolkit:AvatarView Grid.RowSpan="2" Grid.Column="1" BackgroundColor="Red" Text="BC" />
+            <Label Grid.Row="0" Grid.Column="3"  Text="{Binding UserName}" FontAttributes="Bold"/>
+            <Label Grid.Row="1" Grid.Column="3" Text="{Binding UserUniqueName}"/>
+            <Button Text="..." Grid.RowSpan="2" Grid.Column="4" Style="{StaticResource InvertedButton}"/>
+        </Grid>
+        <Image BackgroundColor="LightGray" Source="dotnet_bot.png" Aspect="AspectFit" HeightRequest="392"/>
+        <Label Text="{Binding Content}" Padding="5,0"/>
+        <Label Text="{Binding Timeago}" Padding="5,0" TextColor="Gray"/>
+    </StackLayout>
+
+
+</ContentView>
