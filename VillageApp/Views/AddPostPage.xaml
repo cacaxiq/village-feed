@@ -4,13 +4,15 @@
              x:Class="VillageApp.Views.AddPostPage"
     xmlns:viewmodel="clr-namespace:VillageApp.ViewModels"
              Title="AddPostPage" x:DataType="viewmodel:AddPostViewModel">
-    
-    <VerticalStackLayout>
-        <Entry Text="{Binding Post.Title}"/>
-        <Border>
-
-            <Editor  HeightRequest="500" Text="{Binding Post.Content}"/>
-        </Border>
-        <Button Text="Salvar" Command="{Binding SaveCommand}"/>
-    </VerticalStackLayout>
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Spacing="10">
+            <Entry Text="{Binding Post.Title}"/>
+            <Border>
+                <Editor MaxLength="2000" MinimumHeightRequest="300" AutoSize="TextChanges" VerticalOptions="Fill" Text="{Binding Post.Content}"/>
+            </Border>
+            <Button Text="Salvar" Command="{Binding SaveCommand}"/>
+            <Button Text="+ Adicionar imagens" Command="{Binding SaveCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+   
 </ContentPage>

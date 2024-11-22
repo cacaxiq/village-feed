@@ -18,7 +18,8 @@ namespace VillageApp.ViewModels
             UserId = "1",
             UserName = string.Empty,
             UserUniqueName = string.Empty,
-            Timeago = string.Empty
+            Timeago = string.Empty,
+            Medias = { "dummy",  }
         };
 
         [RelayCommand]

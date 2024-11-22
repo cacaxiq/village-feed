@@ -1,11 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
-using Microsoft.EntityFrameworkCore;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
+using System.Reflection;
 using VillageApp.Data;
 using VillageApp.Services;
-using VillageApp.ViewModels;
-using VillageApp.Views;
-using System.Reflection;
+using Microsoft.Maui.Handlers;
+
+#if ANDROID
+using VillageApp.Platforms;
+#endif
 
 namespace VillageApp;
 
@@ -29,6 +31,16 @@ public static class MauiProgram
 
 #if DEBUG
         builder.Logging.AddDebug();
+#endif
+
+#if ANDROID
+        Microsoft.Maui.Handlers.ElementHandler.ElementMapper.AppendToMapping("CustomEntry", (handler, view) =>
+        {
+            if (view is Entry or Editor)
+            {
+                CustomEntryMapper.Map(handler, view);
+            }
+        });
 #endif
 
         return builder.Build();

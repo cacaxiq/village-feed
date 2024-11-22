@@ -4,7 +4,7 @@
              xmlns:models="clr-namespace:VillageApp.Models"
              x:DataType="models:Post"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="VillageApp.Views.Templates.PostTemplate">
+             x:Class="VillageApp.Views.Templates.PostImageTemplate">
     <StackLayout Spacing="10">
         <Grid RowDefinitions="*,*" ColumnDefinitions="Auto,*,Auto" >
             <toolkit:AvatarView Margin="5,0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="Red" Text="BC" />
@@ -12,6 +12,7 @@
             <Label Grid.Row="1" Grid.Column="1" Text="{Binding UserUniqueName}" TextColor="Gray" VerticalOptions="StartAndExpand"/>
             <Button Text="..." Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource InvertedButton}"/>
         </Grid>
+        <Image BackgroundColor="LightGray" Source="dotnet_bot.png" Aspect="AspectFit" HeightRequest="392"/>
         <Label Text="{Binding Content}" Padding="10,0"/>
         <Label Text="{Binding Timeago}" Padding="10,0" TextColor="Gray"/>
     </StackLayout>
