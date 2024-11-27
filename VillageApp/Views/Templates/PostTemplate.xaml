@@ -3,16 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:VillageApp.Models"
              x:DataType="models:Post"
+    xmlns:views="clr-namespace:VillageApp.Views.Templates"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="VillageApp.Views.Templates.PostTemplate">
-    <StackLayout Spacing="10">
-        <Grid RowDefinitions="*,*" ColumnDefinitions="Auto,*,Auto" >
-            <toolkit:AvatarView Margin="5,0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="Red" Text="BC" />
-            <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserName}" FontAttributes="Bold" VerticalOptions="EndAndExpand"/>
-            <Label Grid.Row="1" Grid.Column="1" Text="{Binding UserUniqueName}" TextColor="Gray" VerticalOptions="StartAndExpand"/>
-            <Button Text="..." Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource InvertedButton}"/>
-        </Grid>
-        <Label Text="{Binding Content}" Padding="10,0"/>
-        <Label Text="{Binding Timeago}" Padding="10,0" TextColor="Gray"/>
+    <StackLayout Padding="0,0,0,30" Margin="0">
+        <views:PostHeader Post="{Binding .}"/>
+        <Label FontSize="12" LineHeight="22" Text="{Binding Content}" TextColor="#919191"  Padding="0,25,0,28"/>
+        <BoxView HeightRequest="1" Color="#EAEAEA" Margin="0,16,0,0"/>
     </StackLayout>
 </ContentView>

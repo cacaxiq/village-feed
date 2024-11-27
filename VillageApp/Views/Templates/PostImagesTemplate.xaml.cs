@@ -6,4 +6,10 @@ public partial class PostImagesTemplate : ContentView
 	{
 		InitializeComponent();
 	}
+
+    protected override void OnApplyTemplate()
+    {
+        Console.WriteLine(postview.WidthRequest);
+        base.OnApplyTemplate();
+    }
 }

@@ -32,7 +32,7 @@
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">12.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
@@ -89,6 +89,9 @@
 	  <MauiXaml Update="Views\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Templates\PostHeader.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Templates\PostImagesTemplate.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -103,6 +106,20 @@
 	<ItemGroup>
 	  <Folder Include="Data\Migrations\" />
 	  <Folder Include="Handlers\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Platforms\Android\AndroidManifest.Debug.xml">
+	    <IsTransformFile>true</IsTransformFile>
+	    <DependentUpon>AndroidManifest.xml</DependentUpon>
+	  </None>
+	  <None Update="Platforms\Android\AndroidManifest.Release.xml">
+	    <IsTransformFile>true</IsTransformFile>
+	    <DependentUpon>AndroidManifest.xml</DependentUpon>
+	  </None>
+	  <None Update="Platforms\Android\AndroidManifest.xml">
+	    <TransformOnBuild>true</TransformOnBuild>
+	  </None>
 	</ItemGroup>
 
 </Project>

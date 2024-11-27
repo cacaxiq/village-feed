@@ -7,6 +7,11 @@ namespace VillageApp.Views
         public ContentPageBase()
         {
             NavigationPage.SetBackButtonTitle(this, string.Empty);
+
+            SizeChanged += (s, e) =>
+            {
+                Application.Current.Resources["DefaultPostHeight"] = this.Width*0.71;
+            };
         }
 
         protected override async void OnAppearing()

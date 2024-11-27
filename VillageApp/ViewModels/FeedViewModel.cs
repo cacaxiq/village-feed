@@ -8,16 +8,10 @@ using VillageApp.ViewModels.Base;
 
 namespace VillageApp.ViewModels
 {
-    public partial class FeedViewModel : ViewModelBase
+    public partial class FeedViewModel(INavigationService navigationService, AppDbContext dbContext) : ViewModelBase(navigationService)
     {
-        private readonly INavigationService navigationService;
-        private readonly AppDbContext dbContext;
-
-        public FeedViewModel(INavigationService navigationService, AppDbContext dbContext) : base(navigationService)
-        {
-            this.navigationService = navigationService;
-            this.dbContext = dbContext;
-        }
+        private readonly INavigationService navigationService = navigationService;
+        private readonly AppDbContext dbContext = dbContext;
 
         public ObservableCollectionEx<Post> Posts { get; } = [];
 

@@ -12,15 +12,17 @@ namespace VillageApp.ViewModels
         [ObservableProperty]
         private Post post = new()
         {
-            Id = string.Empty,
+            Id = Guid.CreateVersion7().ToString(),
             Title = string.Empty,
             Content = string.Empty,
             UserId = "1",
             UserName = string.Empty,
             UserUniqueName = string.Empty,
             Timeago = string.Empty,
-            Medias = { "dummy",  }
+            Medias = { }
         };
+
+        public ObservableCollectionEx<string> Medias { get; } = [];
 
         [RelayCommand]
         public async Task Save()
@@ -31,6 +33,27 @@ namespace VillageApp.ViewModels
             await dbContext.SaveChangesAsync();
             await transaction.CommitAsync();
             await navigationService.PopAsync();
+        }
+
+        [RelayCommand]
+        public async Task GetMedia()
+        {
+            if (MediaPicker.Default.IsCaptureSupported)
+            {
+                FileResult photo = await MediaPicker.Default.CapturePhotoAsync();
+
+                if (photo != null)
+                {
+                    // save the file into local storage
+                    string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
+
+                    using Stream sourceStream = await photo.OpenReadAsync();
+                    using FileStream localFileStream = File.OpenWrite(localFilePath);
+                    await sourceStream.CopyToAsync(localFileStream);
+                    post.Medias.Add(localFilePath);
+                    Medias.ReloadData(post.Medias);
+                }
+            }
         }
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:VillageApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="models:Post"
+             x:Class="VillageApp.Views.Templates.PostHeader" 
+      RowDefinitions="*,19" 
+      RowSpacing="4" 
+      ColumnDefinitions="50,*,Auto"  
+      Padding="0" 
+      Margin="0">
+    <toolkit:AvatarView WidthRequest="50" HeightRequest="50" Padding="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="Red" Text="BC" />
+    <Label Padding="16,6,0,0" TextColor="#1A1B23" FontSize="14"  Grid.Row="0" Grid.Column="1" Text="{Binding UserName}" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+    <Label Padding="16,0,0,1" TextColor="#919191" FontSize="12"  Grid.Row="1" Grid.Column="1" Text="{Binding Timeago}"  VerticalOptions="End"/>
+    <Button Margin="0" BackgroundColor="#FFFFFF" TextColor="#1d1d20" FontSize="12" Text="Following" Grid.RowSpan="2"  Grid.Column="2" BorderColor="#EEEEEE" BorderWidth="1" HeightRequest="34" CornerRadius="50"/>
+</Grid>

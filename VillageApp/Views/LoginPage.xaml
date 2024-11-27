@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:VillageApp.Controls"
              x:Class="VillageApp.Views.LoginPage">
     <ScrollView >
         <StackLayout VerticalOptions="FillAndExpand">
-            <Image
-          Source="icon.png"
-          HeightRequest="185"
-          Aspect="AspectFit"
-          SemanticProperties.Description="dot net bot in a race car number eight" Margin="0,0,0,20"/>
-            <Label Text="Village App" HorizontalOptions="Center" Margin="0,0,0,20" />
-            <Entry Margin="0,0,0,20"/>
-            <Entry/>
+            <Label Text="Hello Again!" TextColor="#1D1D20" HorizontalOptions="CenterAndExpand" Margin="0,37,0,0" FontSize="40" LineHeight="60"/>
+             <Label Text="Sign in to your account" TextColor="#4A4A4A" HorizontalOptions="CenterAndExpand" Margin="0,0,0,42.5" FontSize="14" LineHeight="21"/>
+            <controls:CustomEntry Label="Email address" Placeholder="Enter your email address" Margin="0,0,0,19" Padding="17,14,17,11"/>
+             <controls:CustomEntry Label="Password" Placeholder="Enter  your password"/>
             <Button VerticalOptions="EndAndExpand" Text="Login" Command="{Binding LoginCommand}"/>
         </StackLayout>
     </ScrollView>

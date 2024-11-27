@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <x:Double x:Key="DefaultPostHeight">100</x:Double>
+
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
@@ -170,7 +172,7 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -195,11 +197,12 @@
     <Style TargetType="Label" x:Key="PostHeadline" BasedOn="{StaticResource Headline}"> 
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="Padding" Value="10,0" />
     </Style>
 
     <Style TargetType="Label" x:Key="SubHeadline">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
-        <Setter Property="FontSize" Value="Body" />
+        <Setter Property="FontSize" Value="Default" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
@@ -207,6 +210,12 @@
     <Style TargetType="Label" x:Key="PostSubHeadline" BasedOn="{StaticResource SubHeadline}">
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="PostTimeAgoline" BasedOn="{StaticResource PostSubHeadline}">
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="TextColor" Value="Gray" />
     </Style>
 
     <Style TargetType="Span">

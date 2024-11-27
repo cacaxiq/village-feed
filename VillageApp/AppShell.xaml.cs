@@ -27,8 +27,6 @@ public partial class AppShell : Shell
 
     private static void InitializeRouting()
     {
-        Routing.RegisterRoute("Feed", typeof(FeedPage));
-        Routing.RegisterRoute("Profile", typeof(ProfilePage));
         Routing.RegisterRoute("AddPost", typeof(AddPostPage));
     }
 }

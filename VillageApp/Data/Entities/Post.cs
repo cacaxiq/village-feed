@@ -40,9 +40,8 @@ namespace VillageApp.Data.Entities
             ParentId = post.ParentId;
             Content = post.Content;
             LikesCount = post.LikesCount;
-            Medias = post.Medias;
             UserId = post.UserId;
-
+            Medias = post.Medias;
 
             return this;
         }

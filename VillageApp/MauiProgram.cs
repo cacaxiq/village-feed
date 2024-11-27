@@ -4,9 +4,14 @@ using System.Reflection;
 using VillageApp.Data;
 using VillageApp.Services;
 using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+
 
 #if ANDROID
 using VillageApp.Platforms;
+
+#elif IOS
+using VillageApp.Platforms.iOS;
 #endif
 
 namespace VillageApp;
@@ -33,15 +38,13 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-#if ANDROID
-        Microsoft.Maui.Handlers.ElementHandler.ElementMapper.AppendToMapping("CustomEntry", (handler, view) =>
+        ElementHandler.ElementMapper.AppendToMapping("CustomEntry", (handler, view) =>
         {
             if (view is Entry or Editor)
             {
                 CustomEntryMapper.Map(handler, view);
             }
         });
-#endif
 
         return builder.Build();
     }

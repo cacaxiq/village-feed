@@ -10,21 +10,20 @@ namespace VillageApp.Platforms
             GradientDrawable drawable = new() { };
             drawable.SetShape(ShapeType.Rectangle);
             drawable.SetColor(Android.Graphics.Color.Transparent);
-            var colorAccent = Android.App.Application.Context.Resources.GetColor(Resource.Color.colorAccent, null);
-            drawable.SetStroke(4, colorAccent);
+            drawable.SetStroke(0, Android.Graphics.Color.Transparent);
 
             drawable.SetCornerRadius(10);
 
             if (view is Editor)
             {
                 ((EditorHandler)handler).PlatformView.Background = drawable;
-                ((EditorHandler)handler).PlatformView.SetPadding(24, 24, 24, 24);
+                ((EditorHandler)handler).PlatformView.SetPadding(0,0,0,0);
             }
 
             if (view is Entry)
             {
                 ((EntryHandler)handler).PlatformView.Background = drawable;
-                ((EntryHandler)handler).PlatformView.SetPadding(24, 0, 24, 0);
+                ((EntryHandler)handler).PlatformView.SetPadding(0, 0, 0, 0);
             }
         }
     }
